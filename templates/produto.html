@@ -26,10 +26,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+      <tr ng-repeat="p in listaDeProdutos">
+        <td>{{p.codigo}}</td>
+        <td>{{p.descricao}}</td>
+        <td>{{p.preco}}</td>
          <td>
              <a class="btn btn-info" href="#" role="button">Editar</a>
              <a class="btn btn-danger" href="#" role="button">Remover</a>
