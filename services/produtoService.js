@@ -31,11 +31,7 @@ function produtoService(){
     }
 
     function remover(index){
-        var idx = produtos.indexOf(index);
-        if(idx > -1){
-             produtos.splice(idx, 1);
-    
-        }
+        produtos.splice(index, 1);
         return produtos;
     }
 

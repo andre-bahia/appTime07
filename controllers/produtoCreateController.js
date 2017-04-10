@@ -15,7 +15,6 @@ function produtoController(produtoService, $scope, $location){
     }
 
     function remover(codigo) {
-        console.log(codigo);
         $scope.listaDeProdutos = produtoService.remover(codigo);
     }
 
