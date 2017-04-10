@@ -18,6 +18,18 @@ app.config(function($routeProvider) {
         templateUrl:"templates/produto-form.html",
         controller:"produtoEditController"
     })
+    .when('/pedido', {
+        templateUrl:"templates/pedido.html",
+        controller:"pedidoCreateController"
+    })
+    .when('/pedido/cadastrar', {
+        templateUrl:"templates/pedido-form.html",
+        controller:"pedidoCreateController"
+    })
+    .when('/pedido/:code/editar', {
+        templateUrl:"templates/pedido-form.html",
+        controller:"pedidoEditController"
+    })
     .otherwise({
         redirectTo: "/"
     });
