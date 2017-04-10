@@ -8,11 +8,15 @@ app.config(function($routeProvider) {
     })
     .when('/produto', {
         templateUrl:"templates/produto.html",
-        controller:"produtoController"
+        controller:"produtoCreateController"
     })
     .when('/produto/cadastrar', {
         templateUrl:"templates/produto-form.html",
-        controller:"produtoController"
+        controller:"produtoCreateController"
+    })
+    .when('/produto/:code/editar', {
+        templateUrl:"templates/produto-form.html",
+        controller:"produtoEditController"
     })
     .otherwise({
         redirectTo: "/"
