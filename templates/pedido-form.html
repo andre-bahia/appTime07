@@ -5,22 +5,106 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-        <form name="produtoForm" novalidate ng-submit="salvar(produto)">
-        <div class="form-group">
-            <label for="">Código</label>
-            <input type="text" class="form-control" id="" name="codigo" ng-model="produto.codigo" placeholder="Código" required>
-            <span style="color: red" ng-if="produtoForm.codigo.$invalid && produtoForm.codigo.$dirty">Campo obrigatorio</span>
+        <form name="pedidoForm" novalidate ng-submit="salvar(pedido)">
+        <div class="col-md-4">
+            {{pedido}}
+            <div class="form-group">
+                <label for="">Código do Pedido</label>
+                <input type="text" class="form-control" id="" name="codigo" ng-model="pedido.codigo" placeholder="Código" required>
+                <span style="color: red" ng-if="pedidoForm.codigo.$invalid && pedidoForm.codigo.$dirty">Campo obrigatorio</span>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="">Descrição</label>
-            <input type="text" class="form-control" name="descricao" ng-model="produto.descricao">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Emissão</label>
+                <input type="text" class="form-control" name="emissao" ui-mask="99/99/9999" model-view-value="true" ng-model="pedido.emissao">
+            </div>
         </div>
-         <div class="form-group">
-            <label for="">Preço</label>
-            <input type="text" class="form-control" id="" placeholder="Preço" name="preco" ng-model="produto.preco">
-        </div>  
-        <button type="submit" class="btn btn-primary" ng-disabled="produtoForm.$invalid" >Salvar</button>
+        <div class="col-md-4">
+        
+        </div>
+        <div class="col-md-12" style="padding-top:25px">
+             <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Desconto</th>
+                        <th>Total</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="form-group" style="padding-top:10px;">
+                                <label for="">Total</label>
+                            </div> 
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="" placeholder="" name="total" ng-model="pedido.total">
+                            </div> 
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Buscar produto" ng-model="item.codigo">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit" style="padding: 9px" ng-click="buscarProduto(item.codigo)">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                           <div class="form-group">
+                                <input type="text" class="form-control" id="" placeholder="Preço" name="preco" ng-model="item.preco">
+                            </div>   
+                        </td>
+                        <td>
+                            <div class="form-group">     
+                                <input type="text" class="form-control" name="quantidade" ng-model="item.quantidade">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control"  placeholder="Preço" name="desconto" ng-model="item.desconto" ng-change="calculaDesconto(item.preco*item.quantidade, item.desconto)">
+                            </div>  
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="" placeholder="Total" name="preco" ng-model="item.total">
+                            </div>   
+                        </td>
+                        <td>
+                            <div class="form-group" style="float:right;">
+                            <button type="submit" class="btn btn-success" ng-click="adicionarProduto(item)">Incluir produto</button>
+                        </div>  
+                        </td>
+                    </tr>
+                    <tr ng-repeat="p in pedido.itens">
+                        <td>{{p.codigo}}</td>
+                        <td>{{p.preco}}</td>
+                        <td>{{p.quantidade}}</td>
+                        <td>{{p.desconto}}</td>
+                        <td>{{p.total}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12" style="float:right">
+            <button type="submit" class="btn btn-primary" ng-disabled="produtoForm.$invalid" >Salvar</button>
+        </div>
         </form>
     </div>
 </div>

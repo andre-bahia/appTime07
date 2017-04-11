@@ -1,12 +1,14 @@
 app.controller("pedidoCreateController", pedidoController);
 
-function pedidoController(pedidoService, $scope, $location){
+function pedidoController(pedidoService, $scope, $location, produtoService){
     $scope.pedido = {};
+    $scope.pedido.itens = [];
+    $scope.item = {};
     $scope.title = "Cadastrar";
 
     function salvar(pedido) {
-        produtoService.saveProduto(produto);
-        $location.path('produto');
+        pedidoService.savePedido(pedido);
+        //$location.path('produto');
     }
 
     function listar() {
@@ -18,7 +20,22 @@ function pedidoController(pedidoService, $scope, $location){
         $scope.listaDePedidos = pedidoService.remover(codigo);
     }
 
+    function buscarProduto(codigo) {
+       $scope.item = produtoService.getByCode(codigo);
+    }
+    
+    function calculaDesconto(total, desconto){
+           $scope.item.total =  total - desconto; 
+    }
+
+    function adicionarProduto(produto){
+        $scope.pedido.itens.push(produto);
+    }
+
     listar();
     $scope.salvar = salvar;
     $scope.remover = remover;
+    $scope.buscarProduto = buscarProduto;
+    $scope.calculaDesconto = calculaDesconto;
+    $scope.adicionarProduto = adicionarProduto;
 }

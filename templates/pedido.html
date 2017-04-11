@@ -19,17 +19,19 @@
 <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Id</th>
-        <th>Descrição</th>
-        <th>Preço</th>
+        <th>Número</th>
+        <th>Emissão</th>
+        <th>Quantidade de itens</th>
+        <th>Total de itens</th>
         <th>Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="p in listaDePedidos">
         <td>{{p.codigo}}</td>
-        <td>{{p.descricao}}</td>
-        <td>{{p.preco}}</td>
+        <td>{{p.emissao}}</td>
+        <td>{{p.quantidade}}</td>
+        <td>{{p.total}}</td>
          <td>
              <a class="btn btn-info" href="#/pedidos/{{p.codigo}}/editar" role="button">Editar</a>
              <a class="btn btn-danger" href="javascript:void(0);" ng-click="remover($index)" role="button">Remover</a>
