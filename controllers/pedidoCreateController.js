@@ -4,6 +4,7 @@ function pedidoController(pedidoService, $scope, $location, produtoService){
     $scope.pedido = {};
     $scope.pedido.itens = [];
     $scope.item = {};
+    $scope.pedido.total = '';
     $scope.title = "Cadastrar";
 
     function salvar(pedido) {
@@ -29,7 +30,10 @@ function pedidoController(pedidoService, $scope, $location, produtoService){
     }
 
     function adicionarProduto(produto){
+        console.log(produto.total);
         $scope.pedido.itens.push(produto);
+        $scope.pedido.total += produto.total;
+        $scope.item = {};
     }
 
     listar();

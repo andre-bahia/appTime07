@@ -7,7 +7,6 @@
 <div class="row">
         <form name="pedidoForm" novalidate ng-submit="salvar(pedido)">
         <div class="col-md-4">
-            {{pedido}}
             <div class="form-group">
                 <label for="">Código do Pedido</label>
                 <input type="text" class="form-control" id="" name="codigo" ng-model="pedido.codigo" placeholder="Código" required>
@@ -67,22 +66,22 @@
                         </td>
                         <td>
                            <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="Preço" name="preco" ng-model="item.preco">
+                                <input type="text" readonly class="form-control" id="" placeholder="Preço" name="preco" ng-model="item.preco">
                             </div>   
                         </td>
                         <td>
-                            <div class="form-group">     
+                            <div class="form-group">    
                                 <input type="text" class="form-control" name="quantidade" ng-model="item.quantidade">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
-                                <input type="text" class="form-control"  placeholder="Preço" name="desconto" ng-model="item.desconto" ng-change="calculaDesconto(item.preco*item.quantidade, item.desconto)">
+                                <input type="text" class="form-control"  placeholder="" name="desconto" ng-model="item.desconto" ng-change="calculaDesconto(item.preco*item.quantidade, item.desconto)">
                             </div>  
                         </td>
                         <td>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="" placeholder="Total" name="preco" ng-model="item.total">
+                                <input type="text" readonly class="form-control" id="" placeholder="Total" name="preco" ng-model="item.total">
                             </div>   
                         </td>
                         <td>
